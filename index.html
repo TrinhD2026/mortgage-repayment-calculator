@@ -13,47 +13,72 @@
 <body>
     <main>
         <div class="input-section">
-            <h1>Mortgage Calculator</h1>
-            <button type="button">Clear All</button>
-            <div class="input-container month-container">
-                <label for="mortgage-amount">Mortgage Amount</label>
-                <input type="number" class="input mortgage-amount" id="mortgage-amount">
-                <p class="error-message" id="amount-error"></p>
+            <div class="header-and-clear-btn">
+                <h1>Mortgage Calculator</h1>
+                <button type="button" class="btn clear-btn">Clear All</button>
             </div>
-            <div class="input-container month-container">
-                <label for="mortgage-term">Mortgage Term</label>
-                <input type="number" class="input mortgage-term" id="mortgage-term">
-                <p class="error-message" id="term-error"></p>
+            <div class="input-container amount-container">
+                <label>Mortgage Amount</label>
+                <label class="custom-input">
+                    <span class="mortgage-symbol" id="amount-symbol">£</span>
+                    <input type="number" class="input mortgage-amount" id="mortgage-amount">
+                </label>
+                <p class="error-message" id="amount-error">This field is required</p>
             </div>
-            <div class="input-container month-container">
-                <label for="interest-rate">Interest Rate</label>
-                <input type="number" class="input interest-rate" id="interest-rate">
-                <p class="error-message" id="interest-error"></p>
+            <div class="term-and-interest">
+                <div class="input-container term-container">
+                    <label>Mortgage Term</label>
+                    <label class="custom-input">
+                        <input type="number" class="input mortgage-term" id="mortgage-term">
+                        <span class="mortgage-symbol" id="term-symbol">Years</span>
+                    </label>
+                    <p class="error-message" id="term-error">This field is required</p>
+                </div>
+
+                <div class="input-container interest-container">
+                    <label>Interest Rate</label>
+                    <label class="custom-input">
+                        <input type="number" class="input mortgage-interest" id="mortgage-interest">
+                        <span class="mortgage-symbol" id="interest-symbol">%</span>
+                    </label>
+                    <p class="error-message" id="interest-error">This field is required</p>
+                </div>
             </div>
+            
             <div class="input-container type-container">
                 <label>Mortgage Type</label>
-                <div class="mortgage-types">
+                <div class="types-selection" id="types-selection">
                     <label class="type-label" for="repayment-type">
-                        <input type="radio" name="mortgage-type" class="mortgage-type" id="repayment-type" value="repayment">
-                        <span>Repayment</span>
+                        <input type="radio" name="mortgage-type" class="mortgage-type" id="repayment-type" value="repayment">Repayment
                     </label>
                     <label class="type-label" for="interest-type">
-                        <input type="radio" name="mortgage-type" class="mortgage-type" id="interest-type" value="interest">
-                        <span>Interest</span>
+                        <input type="radio" name="mortgage-type" class="mortgage-type" id="interest-type" value="interest">Interest only
                     </label>
                 </div>
-                <p class="error-message" id="type-error">This field is required*</p>
+                
+                <p class="error-message" id="type-error">This field is required</p>
             </div>
-            <button>
+            <button class="btn calculate-btn" id="calculate-btn">
                 <img src="./assets/images/icon-calculator.svg" alt="calculator icon" />
-                <p>Calculate Repayments</p>
+                Calculate Repayments
             </button>
         </div>
         <div class="output-section">
-            <div class="empty-result">
+            <div class="empty-result" id="empty-result">
                 <img src="./assets/images/illustration-empty.svg" alt="empty illustration" />
                 <h2>Results shown here</h2>
                 <p>Complete the form and click "calculate repayments" to see what your monthly repayments would be.</p>
+            </div>
+            <div class="calculated-result" id="calculated-result">
+                <h2>Your results</h2>
+                <p>Your result are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</p>
+                <div class="result-container">
+                    <label for="monthly-repayments">Your monthly repayments</label>
+                    <p id="monthly-repayments" class="monthly-repayments">£test</p>
+                    <div class="divider"></div>
+                    <label for="total-repayments">Total you'll repay over the term</label>
+                    <p id="total-repayments" class="total-repayments">£test</p>
+                </div>
             </div>
         </div>
     </main>

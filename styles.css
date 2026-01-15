@@ -1,10 +1,14 @@
 :root {
+    --lime: hsl(61, 70%, 52%);
+    --light-lime: hsl(61, 70%, 90%);
+    --red: hsl(4, 69%, 50%);
     --white: hsl(0, 0%, 100%);
     --slate-100: hsl(202, 86%, 94%);
     --slate-300: hsl(203, 41%, 72%);
     --slate-500: hsl(200, 26%, 54%);
     --slate-700: hsl(200, 24%, 40%);
     --slate-900: hsl(202, 55%, 16%);
+    --dark-blue: hsl(219, 29%, 14%);
 }
 
 html {
@@ -31,7 +35,6 @@ html {
     font-weight: 500 700;
 }
 
-
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     display: flex;
@@ -40,14 +43,252 @@ body {
     min-width: 100vw;
     justify-content: center;
     align-items: center;
-    background-color: var(--grey-100);
+    background-color: var(--slate-100);
 }
 
 main {
-    width: clamp(15rem, 80%, 40rem);
+    width: clamp(15rem, 80%, 60rem);
     background-color: var(--white);
-    padding: 3rem 2rem;
-    border-radius: 1rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    color: var(--slate-700);
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+.input-section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
+
+h1 {
+    color: var(--slate-900);
+    font-size: 1.5rem;
+}
+
+.btn {
+    transition: background-color 0.4s ease-out, color 0.4s ease-out;
+}
+
+.clear-btn {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--slate-700);
+}
+
+.clear-btn:hover {
+    color: var(--slate-900);
+}
+
+.clear-btn:active {
+    color: var(--slate-300);
+}
+
+.calculate-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    height: 2.5rem;
+    border: 0;
+    background-color: var(--lime);
+    color: var(--slate-900);
+    font-weight: 700;
+    border-radius: 4rem;
+}
+
+.calculate-btn:hover {
+    background-color: var(--slate-500);
+}
+
+.calculate-btn:active {
+    background-color: var(--slate-700);
+}
+
+.term-and-interest {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.custom-input {
+    display: flex;
+    height: 2.5rem;
+    flex-direction: row;
+    border: 0.15rem solid var(--slate-500);
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.mortgage-symbol {
+    padding: 0.5rem 1rem;
+    background-color: var(--slate-300);
+    height: 100%;
+}
+
+.input[type="number"] {
+    font-family: 'Poppins Bold';
+    color: var(--slate-700);
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out;
+    border: 0;
+    outline: none;
+}
+
+input[type='radio'] {
+    appearance: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    cursor: pointer;
+    border: 0.1rem solid var(--slate-900);
+    margin: 0;
+    border-radius: 50%;
+    background-color: var(--white);
+    transition: all 0.3s;
+    transform: translateY(0.1rem);
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.3s transform ease-in-out;
+    box-shadow: inset 1em 1em var(--lime);
+}
+
+input[type="radio"]:checked {
+    border: 0.1rem solid var(--lime);
+    background-color: var(--light-lime);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.types-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.type-label {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    padding: 0.4rem 0 0 1rem;
+    border: 0.15rem solid var(--slate-500);
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 1rem auto;
+    gap: 1rem;
+}
+
+.radio-selected {
+    border: 0.15rem solid var(--lime);
+    background-color: var(--light-lime);
+}
+
+.output-section {
+    font-size: 0.9rem;
+    background-color: var(--slate-900);
+    border-radius: 0 0 1rem 1rem;
+    padding: 2rem;
+    color: var(--slate-500);
+
+    h2 {
+        color: var(--white);
+    }
+
+    .empty-result {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        display: none;
+
+        img {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+
+    .calculated-result {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+
+        .result-container {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--dark-blue);
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-top: 0.2rem solid var(--lime);
+
+            .divider {
+                height: 0.1rem;
+                background-color: var(--slate-500);
+                width: 100%;
+            }
+
+            .monthly-repayments {
+                color: var(--lime);
+                font-size: 3rem;
+                font-weight: 700;
+            }
+
+            .total-repayments {
+                color: var(--white);
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.error-symbol{
+    color: var(--white);
+    background-color: var(--red);
+}
+
+.error-input{
+    border-color: var(--red);
 }
 
 .error-message {
@@ -55,3 +296,32 @@ main {
     color: var(--red);
     margin-top: 0.3rem;
 }
+
+@media screen and (width > 53rem) {
+    main {
+        flex-direction: row;
+    }
+
+    .input-section {
+        width: 50%;
+
+        .term-and-interest {
+            flex-direction: row;
+        }
+
+        .calculate-btn {
+            width: 80%;
+        }
+    }
+
+    .output-section {
+        width: 50%;
+        border-radius: 0 1rem 1rem 5rem;
+    }
+
+    .output-section .calculated-result .result-container{
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-top: 1rem;
+    }
+} 
