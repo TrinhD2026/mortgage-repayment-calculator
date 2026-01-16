@@ -12,7 +12,7 @@
 </head>
 <body>
     <main>
-        <div class="input-section">
+        <form class="form" id="form">
             <div class="header-and-clear-btn">
                 <h1>Mortgage Calculator</h1>
                 <button type="button" class="btn clear-btn">Clear All</button>
@@ -38,7 +38,7 @@
                 <div class="input-container interest-container">
                     <label>Interest Rate</label>
                     <label class="custom-input">
-                        <input type="number" class="input mortgage-interest" id="mortgage-interest">
+                        <input type="number" class="input mortgage-interest" id="mortgage-interest" step="0.01">
                         <span class="mortgage-symbol" id="interest-symbol">%</span>
                     </label>
                     <p class="error-message" id="interest-error">This field is required</p>
@@ -58,11 +58,11 @@
                 
                 <p class="error-message" id="type-error">This field is required</p>
             </div>
-            <button class="btn calculate-btn" id="calculate-btn">
+            <button type="submit" class="btn calculate-btn" id="calculate-btn">
                 <img src="./assets/images/icon-calculator.svg" alt="calculator icon" />
                 Calculate Repayments
             </button>
-        </div>
+        </form>
         <div class="output-section">
             <div class="empty-result" id="empty-result">
                 <img src="./assets/images/illustration-empty.svg" alt="empty illustration" />
@@ -74,10 +74,10 @@
                 <p>Your result are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</p>
                 <div class="result-container">
                     <label for="monthly-repayments">Your monthly repayments</label>
-                    <p id="monthly-repayments" class="monthly-repayments">£test</p>
+                    <p id="monthly-repayments" class="monthly-repayments">£ <span id="monthly-repay"></span></p>
                     <div class="divider"></div>
                     <label for="total-repayments">Total you'll repay over the term</label>
-                    <p id="total-repayments" class="total-repayments">£test</p>
+                    <p id="total-repayments" class="total-repayments">£<span id="total-repay"></span></p>
                 </div>
             </div>
         </div>
