@@ -120,16 +120,26 @@ function calculateMortgage(amount, term, interest, isInterestOnly) {
     const powerVar = Math.pow((monthlyInterst + 1), totalMonths);
     const payPerMonth = amount * monthlyInterst * powerVar / (powerVar - 1);
     const totalAmount = payPerMonth * totalMonths;
+    const formatter = new Intl.NumberFormat("en-EN");
     if (isInterestOnly) {
         const interestAmount = totalAmount - amount;
-        monthlyRepayment.textContent = `${(interestAmount / totalMonths).toFixed(2)}`;
-        totalRepayment.textContent = `${interestAmount.toFixed(2)}`;
+        monthlyRepayment.textContent = `${formatter.format((interestAmount / totalMonths).toFixed(2))}`;
+        totalRepayment.textContent = `${formatter.format(interestAmount.toFixed(2))}`;
     }
     else {
-        monthlyRepayment.textContent = `${payPerMonth.toFixed(2)}`;
-        totalRepayment.textContent = `${totalAmount.toFixed(2)}`;
+        monthlyRepayment.textContent = `${formatter.format(payPerMonth.toFixed(2))}`;
+        totalRepayment.textContent = `${ formatter.format(totalAmount.toFixed(2))}`;
     }
 }
+
+//function handleNumberInputChange(event) {
+//    const newStr = event.target.value.trim();
+//    if (newStr) {
+//        const newNum = Number(newStr);
+//        const formatter = new Intl.NumberFormat("en-EN");
+//        event.target.value = `${formatter.format(newNum)}`;
+//    }
+//}
 
 repaymentType.addEventListener("change", handleRadioBtn);
 interestType.addEventListener("change", handleRadioBtn);
@@ -138,3 +148,7 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     validateAndCalculateMortgage();
 });
+
+//mortgageAmount.addEventListener("input", handleNumberInputChange);
+//mortgageInterest.addEventListener("input", handleNumberInputChange);
+//mortgageTerm.addEventListener("input", handleNumberInputChange);
