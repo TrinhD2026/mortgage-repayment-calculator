@@ -15,7 +15,7 @@ const typeError = document.getElementById("type-error");
 const repaymentType = document.getElementById("repayment-type");
 const interestType = document.getElementById("interest-type");
 
-const calculateBtn = document.getElementById("calculate-btn");
+const clearBtn = document.getElementById("clear-btn");
 
 //output
 const emptyResult = document.getElementById("empty-result");
@@ -132,14 +132,12 @@ function calculateMortgage(amount, term, interest, isInterestOnly) {
     }
 }
 
-//function handleNumberInputChange(event) {
-//    const newStr = event.target.value.trim();
-//    if (newStr) {
-//        const newNum = Number(newStr);
-//        const formatter = new Intl.NumberFormat("en-EN");
-//        event.target.value = `${formatter.format(newNum)}`;
-//    }
-//}
+clearBtn.addEventListener("click", () => {
+    mortgageAmount.value = "";
+    mortgageInterest.value = "";
+    mortgageTerm.value = "";
+    resetOutput();
+});
 
 repaymentType.addEventListener("change", handleRadioBtn);
 interestType.addEventListener("change", handleRadioBtn);
@@ -148,7 +146,3 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     validateAndCalculateMortgage();
 });
-
-//mortgageAmount.addEventListener("input", handleNumberInputChange);
-//mortgageInterest.addEventListener("input", handleNumberInputChange);
-//mortgageTerm.addEventListener("input", handleNumberInputChange);
